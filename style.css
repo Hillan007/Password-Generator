@@ -15,6 +15,9 @@ body {
   box-shadow: 0 10px 30px rgba(17,24,39,0.12);
   width: 360px;
   border: 1px solid rgba(99,102,241,0.08);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding-bottom: 20px;
 }
 
 .welcome {
@@ -26,9 +29,29 @@ body {
 }
 
 .controls label {
-  display: block;
-  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #0f172a;
 }
+
+/* Controls layout and checkbox styling to ensure visibility */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Make checkbox visible and give accent color */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+}
+
+/* ensure dark-mode label is readable in dark mode */
+body.dark .controls label { color: #dbeafe; }
 
 input[type="text"] {
   width: 100%;
@@ -87,3 +110,33 @@ body.dark input[type="text"] {
   border: 1px solid rgba(255,255,255,0.04);
 }
 body.dark .features th, body.dark .features td { border-bottom-color: rgba(255,255,255,0.03); }
+
+/* collapsible features styling */
+details.features {
+  margin-top: 16px;
+  border-radius: 10px;
+}
+details.features summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.06), transparent);
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+}
+details.features[open] summary { background: linear-gradient(90deg, rgba(99,102,241,0.10), transparent); }
+
+.features-content {
+  margin-top: 10px;
+  padding: 8px 6px 12px;
+  background: transparent;
+}
+
+/* summary focus ring for accessibility */
+details.features summary:focus { box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+
+/* dark mode adjustments */
+body.dark details.features summary { color: #e6eef8; background: rgba(255,255,255,0.02); }
+body.dark details.features[open] summary { background: rgba(255,255,255,0.03); }

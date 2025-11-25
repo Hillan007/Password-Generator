@@ -10,6 +10,7 @@
   <div class="container">
     <h1>Password Generator 🔐</h1>
     <p class="welcome">Welcome — generate strong, random passwords quickly and securely.</p>
+
     <div class="controls">
       <label>Password Length:
         <input type="number" id="length" min="4" max="32" value="12" />
@@ -18,6 +19,7 @@
       <label><input type="checkbox" id="lowercase" checked /> Lowercase</label>
       <label><input type="checkbox" id="numbers" checked /> Numbers</label>
       <label><input type="checkbox" id="symbols" /> Symbols</label>
+      <label><input type="checkbox" id="darkmode-toggle" onchange="toggleDarkMode()" /> Dark Mode</label>
       <button onclick="generatePassword()">Generate</button>
     </div>
     <input type="text" id="result" readonly />
@@ -26,7 +28,32 @@
       <span id="strength-text">Strength: —</span>
     </div>
     <button onclick="copyPassword()">Copy</button>
+
+    <details class="features" id="features-details" aria-expanded="false">
+      <summary>Smart & Secure Features ▾</summary>
+      <div class="features-content">
+        <h2>Smart & Secure Features</h2>
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>What It Does</th><th>Why It’s Powerful</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Password Strength Meter</td><td>Visual bar that updates as user selects options</td><td>Teaches users what makes a strong password</td></tr>
+            <tr><td>Avoid Ambiguous Characters</td><td>Option to exclude O, 0, l, 1, etc.</td><td>Reduces confusion when copying passwords</td></tr>
+            <tr><td>Pronounceable Passwords</td><td>Generate passwords like Zanoku12!</td><td>Easier to remember, still secure</td></tr>
+            <tr><td>Passphrase Mode</td><td>Generates 3–5 random words like graceful-lion-candle</td><td>Great for ministry logins or creative memory</td></tr>
+            <tr><td>Auto-Expire Timer</td><td>Password disappears after X seconds</td><td>Adds privacy for shared screens</td></tr>
+            <tr><td>Dark Mode Toggle</td><td>Switch between light/dark themes</td><td>Improves UX and accessibility</td></tr>
+            <tr><td>Copy with Feedback</td><td>“Copied!” toast message or animation</td><td>Confirms action, feels polished</td></tr>
+            <tr><td>Save to LocalStorage (Encrypted)</td><td>Store recent passwords locally</td><td>Lets users revisit without server storage</td></tr>
+            <tr><td>Password History (Session)</td><td>Show last 5 generated passwords</td><td>Helps users compare and choose</td></tr>
+            <tr><td>QR Code Export</td><td>Generate QR for password (e.g. for Wi‑Fi)</td><td>Useful for ministry events or shared access</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
   </div>
+  <div id="toast" class="toast" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
 </html>
